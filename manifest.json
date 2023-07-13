@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Twitter Command Extension",
+  "version": "1.0",
+  "description": "Replace popup with a command in Twitter's tweet box",
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "permissions": ["tabs"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://twitter.com/*",
+        "https://dhruvangg.github.io/notes/*"
+      ],
+      "js": ["content.js", "app.js"]
+    }
+  ]
+}
+
