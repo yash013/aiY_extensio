@@ -9,6 +9,7 @@
     {
       "matches": [
         "https://twitter.com/*",
+        "https://mail.google.com/*",
         "https://dhruvangg.github.io/notes/*"
       ],
       "js": ["content.js", "app.js"]

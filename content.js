@@ -1,10 +1,18 @@
-document.addEventListener('keydown', async function(event) {
-  const tweetBox = document.querySelector('div[aria-label="Tweet text"]');
+document.addEventListener('keyup', async function(event) {
+
+  console.log(window.location.hostname);
+
+  const tweetBox = document.querySelectorAll("textarea")[2]
+  // const tweetBox = document.querySelector(".editable")
+  // const tweetBox = document.querySelector('div[aria-label="Tweet text"]');
   if (event.key === 'Enter' && tweetBox) {
     const tweetContent = tweetBox.textContent.trim();
+    console.log(tweetContent);
     const regex = /^\/y (.+)$/; // Match '/y ' followed by any text
     const match = tweetContent.match(regex);
+      console.log({match});
     if (match) {
+      console.log(tweetContent);
       event.preventDefault();
       const prompt = match[1]; // Extract the prompt text
 
@@ -24,8 +32,10 @@ document.addEventListener('keydown', async function(event) {
         })
       });
 
+      console.log(response);
       if (response.ok) {
         const data = await response.json();
+        console.log({data});
         const outputText = data.choices[0].text.trim();
 
         const insertText = outputText + ' '; // Add a space after the output
@@ -33,7 +43,7 @@ document.addEventListener('keydown', async function(event) {
         const tweetBoxContent = tweetBox.innerText;
 
         const newTweetContent = insertText ;
-        tweetBox.innerText = newTweetContent; // Use innerText instead of textContent
+        tweetBox.value = newTweetContent; // Use innerText instead of textContent
         tweetBox.focus();
         const newCursorPosition = currentCursorPosition + insertText.length;
 
