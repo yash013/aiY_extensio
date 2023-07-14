@@ -4,12 +4,13 @@
   "version": "1.0",
   "description": "Replace popup with a command in Twitter's tweet box",
   "host_permissions": ["http://*/*", "https://*/*"],
-  "permissions": ["tabs"],
+  "permissions": ["tabs", "activeTab", "scripting", "storage"],
   "content_scripts": [
     {
       "matches": [
         "https://twitter.com/*",
-        "https://dhruvangg.github.io/notes/*"
+        "https://mail.google.com/*",
+        "https://www.linkedin.com/*"
       ],
       "js": ["content.js", "app.js"]
     }
