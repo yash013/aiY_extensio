@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Twitter Command Extension",
+  "name": "AI Command Extension",
   "version": "1.0",
   "description": "Replace popup with a command in Twitter's tweet box",
   "host_permissions": ["http://*/*", "https://*/*"],
