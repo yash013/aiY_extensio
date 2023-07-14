@@ -1,25 +1,17 @@
-document.addEventListener('keyup', async function(event) {
-
-  console.log(window.location.hostname);
-
-  const tweetBox = document.querySelectorAll("textarea")[2]
-  // const tweetBox = document.querySelector(".editable")
-  // const tweetBox = document.querySelector('div[aria-label="Tweet text"]');
-  if (event.key === 'Enter' && tweetBox) {
-    const tweetContent = tweetBox.textContent.trim();
-    console.log(tweetContent);
-    const regex = /^\/y (.+)$/; // Match '/y ' followed by any text
+async function handleKeyup(event) {
+  if (event.key === 'Enter') {
+    const tweetBox = event.target;
+    const tweetContent = event.target.textContent.trim();
+    console.log('Element data:', event.target, tweetContent);
+    const regex = /^\/y (.+)$/;
     const match = tweetContent.match(regex);
-      console.log({match});
+    console.log(match, tweetContent);
     if (match) {
-      console.log(tweetContent);
       event.preventDefault();
-      const prompt = match[1]; // Extract the prompt text
+      const prompt = match[1];
 
-      // Make API request to OpenAI
-      const apiKey = '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'; // Replace with your OpenAI API key
-      const apiUrl = 'https://api.openai.com/v1/engines/text-davinci-003/completions';
-      const response = await fetch(apiUrl, {
+      const apiKey = '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';
+      const response = await fetch('https://api.openai.com/v1/engines/text-davinci-003/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,60 +19,41 @@ document.addEventListener('keyup', async function(event) {
         },
         body: JSON.stringify({
           prompt: prompt,
-          max_tokens: 50, // Adjust the desired length of the output
-          temperature: 0.7 // Adjust the temperature for output randomness
+          max_tokens: 50,
+          temperature: 0.7
         })
       });
 
-      console.log(response);
       if (response.ok) {
         const data = await response.json();
-        console.log({data});
+        console.log({ data });
         const outputText = data.choices[0].text.trim();
 
-        const insertText = outputText + ' '; // Add a space after the output
-        const currentCursorPosition = tweetBox.selectionStart;
-        const tweetBoxContent = tweetBox.innerText;
-
-        const newTweetContent = insertText ;
-        tweetBox.value = newTweetContent; // Use innerText instead of textContent
+        const newTweetContent = outputText;
+        tweetBox.innerText = newTweetContent;
         tweetBox.focus();
-        const newCursorPosition = currentCursorPosition + insertText.length;
-
-        // Use a Range and Selection to set the cursor position
-        const range = document.createRange();
-        const selection = window.getSelection();
-        range.setStart(tweetBox.childNodes[0], newCursorPosition);
-        range.collapse(true);
-        selection.removeAllRanges();
-        selection.addRange(range);
-        // tweetBox.setSelectionRange(newCursorPosition, newCursorPosition);
-
       } else {
         console.error('Failed to retrieve OpenAI response:', response.status, response.statusText);
-      } 
-    } else if (event.key === 'Backspace' && tweetBox) {
-        const currentCursorPosition = tweetBox.selectionStart;
-        const tweetBoxContent = tweetBox.innerText;
+      }
 
-        // Check if the backspace key is pressed at the end of the inserted output
-        if (currentCursorPosition === tweetBoxContent.length) {
-          // Delete the last character
-          const newTweetContent = tweetBoxContent.slice(0, currentCursorPosition - 1);
-          tweetBox.innerText = newTweetContent;
-          tweetBox.focus();
-
-          // Calculate the new cursor position
-          const newCursorPosition = currentCursorPosition - 1;
-
-          // Use a Range and Selection to set the cursor position
-          const range = document.createRange();
-          const selection = window.getSelection();
-          range.setStart(tweetBox.childNodes[0], newCursorPosition);
-          range.collapse(true);
-          selection.removeAllRanges();
-          selection.addRange(range);
-        }
     }
   }
+}
+
+
+const observer = new MutationObserver(function (mutationsList) {
+  for (let mutation of mutationsList) {
+    if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+      for (let node of mutation.addedNodes) {
+        if (node instanceof HTMLElement && node.matches('.ql-editor')) {
+          node.addEventListener('keyup', handleKeyup);
+        }
+      }
+    }
+  }
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
 });
