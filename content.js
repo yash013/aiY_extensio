@@ -29,7 +29,7 @@ async function handleKeyup(event) {
         console.log({ data });
         const outputText = data.choices[0].text.trim();
 
-        const newTweetContent = outputText + ' ';
+        const newTweetContent = `/y ${prompt}\n${outputText}`;
         tweetBox.innerText = newTweetContent;
         tweetBox.focus();
       } else {
