@@ -10,7 +10,7 @@ async function handleKeyup(event) {
       event.preventDefault();
       const prompt = match[1];
 
-      const apiKey = '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';
+      const apiKey = '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';
       const response = await fetch('https://api.openai.com/v1/engines/text-davinci-003/completions', {
         method: 'POST',
         headers: {
@@ -19,8 +19,8 @@ async function handleKeyup(event) {
         },
         body: JSON.stringify({
           prompt: prompt,
-          max_tokens: 50,
-          temperature: 0.7
+          max_tokens: 2048,
+          temperature: 0.3
         })
       });
 
@@ -29,7 +29,7 @@ async function handleKeyup(event) {
         console.log({ data });
         const outputText = data.choices[0].text.trim();
 
-        const newTweetContent = outputText;
+        const newTweetContent = outputText + ' ';
         tweetBox.innerText = newTweetContent;
         tweetBox.focus();
       } else {
