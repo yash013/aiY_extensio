@@ -81,7 +81,10 @@ async function handleKeyup(event) {
 const selector = {
   ["twitter.com"]: "div[data-editor] > div > span ",
   ["www.linkedin.com"]: ".ql-editor",
+  ["wordpress.com"]: ".wp-block-post-content",
   ["mail.google.com"]: "table",
+  ["www.reddit.com"]: "table",
+  ["medium.com"]: ".defaultValue",
 };
 
 const observer = new MutationObserver(function (mutationsList) {
