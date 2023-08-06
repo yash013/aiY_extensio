@@ -18,7 +18,7 @@ export default function Home() {
                 Unleash Web AI for Effortless Email, Post, Tweet, Article, and Text Compositions!
               </p>
               <div className="mt-12">
-                <a href="https://www.creative-tim.com/learning-lab/tailwind/js/overview/notus?ref=njs-index" target="_blank" className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blue-500 active:bg-blue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
+                <a href="" className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blue-500 active:bg-blue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                   Get Early Access
                 </a>
               </div>
