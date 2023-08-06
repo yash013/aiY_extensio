@@ -1,13 +1,34 @@
 import HubspotForm from 'react-hubspot-form'
 
 export default function AccessForm() {
+    const handleFormSubmit = async (formData) => {
+      try {
+        const endpoint = `https://api.hsforms.com/submissions/v3/integration/secure/submit/21427242/ba59cd08-1609-4350-9b17-690c23c91de9`;
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          console.log('Form submitted successfully!');
+        } else {
+          console.error('Form submission failed.');
+        }
+      } catch (error) {
+        console.error('An error occurred while submitting the form:', error);
+      }
+   };
+
     return (
         <>
             <HubspotForm
                 region="na1"
                 portalId="21427242"
                 formId="ba59cd08-1609-4350-9b17-690c23c91de9"
-                onSubmit={() => console.log('Submit!')}
+                onSubmit={(handleFormSubmit) => console.log('Submit!')}
                 onReady={(form) => console.log('Form ready!')}
                 loading={<div>Loading...</div>}
             // target="earlyAccessForm"
