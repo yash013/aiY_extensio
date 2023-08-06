@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "AI Command Extension",
+  "name": "ScribeGenie",
   "version": "1.0",
-  "description": "SuperCharge your writing with AI",
+  "description": "ScribeGenie brings ChatGPT's Sorcery to every text box in your browser.",
   "host_permissions": ["http://*/*", "https://*/*"],
   "permissions": ["tabs", "activeTab", "scripting", "storage"],
   "content_scripts": [

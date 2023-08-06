@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import Header from './components/Header'
-import Banner from '@/public/assets/banner.png'
 import PC from '@/public/assets/pc.jpg'
 import AccessForm from './components/AccessForm'
 
@@ -10,23 +9,22 @@ export default function Home() {
   return (
     <>
       <Header />
-      <section className="header relative pt-16 items-center flex h-screen max-h-860-px">
+      <section className="relative pt-16 items-center flex h-screen max-h-860-px">
         <div className="container mx-auto items-center flex flex-wrap">
-          <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
-            <div className="pt-32 sm:pt-0">
-              <h2 className="font-semibold text-4xl text-blueGray-600">Supercharge Your Writing</h2>
+          <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4 mx-auto">
+            <div className="pt-32 sm:pt-0 text-center">
+              <h2 className="font-semibold text-4xl md:text-6xl text-blueGray-600">Supercharge Your Writing</h2>
               <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
                 Unleash Web AI for Effortless Email, Post, Tweet, Article, and Text Compositions!
               </p>
               <div className="mt-12">
-                <a href="https://www.creative-tim.com/learning-lab/tailwind/js/overview/notus?ref=njs-index" target="_blank" className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-pink-500 active:bg-pink-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
+                <a href="https://www.creative-tim.com/learning-lab/tailwind/js/overview/notus?ref=njs-index" target="_blank" className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blue-500 active:bg-blue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                   Get Early Access
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <Image className="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px" alt='banner' src={Banner} />
       </section>
       <section className="mt-48 md:mt-40 pb-40 relative bg-gray-100">
         <div className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20">
@@ -37,11 +35,11 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="flex flex-wrap items-center">
             <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-32">
-              <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-500">
+              <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blue-500">
                 <Image src={PC} alt='pc' className="w-full align-middle rounded-t-lg" />
                 <blockquote className="relative p-8 mb-4">
                   <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" className="absolute left-0 w-full block h-[95px] -top-[94px]">
-                    <polygon points="-30,95 583,95 583,65" className="text-pink-500 fill-current"></polygon>
+                    <polygon points="-30,95 583,95 583,65" className="text-blue-500 fill-current"></polygon>
                   </svg>
                   <h4 className="text-xl font-bold text-white">
                     ScribeGenie casts a spell of brilliance!
@@ -139,6 +137,12 @@ export default function Home() {
                 Be the first to know about our exciting product launch!
               </p>
               <AccessForm />
+              {/* <HubSpotForm
+                region="na1"
+                portalId="21427242"
+                formId="ba59cd08-1609-4350-9b17-690c23c91de9"
+                target="earlyAccessForm"
+                /> */}
             </div>
           </div>
         </div>
