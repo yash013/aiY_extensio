@@ -18,7 +18,7 @@ export default function Home() {
                 Unleash Web AI for Effortless Email, Post, Tweet, Article, and Text Compositions!
               </p>
               <div className="mt-12">
-                <a href="" className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blue-500 active:bg-blue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
+                <a href="#accessForm" className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blue-500 active:bg-blue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                   Get Early Access
                 </a>
               </div>
@@ -125,7 +125,7 @@ export default function Home() {
         </div>
 
         <div className="container mx-auto">
-          <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-16 px-12 relative z-10">
+          <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-16 px-12 relative z-10" id='accessForm'>
             <div className="w-full text-center lg:w-8/12">
               <p className="text-4xl text-center">
                 <span role="img" aria-label="love"> 😍 </span>
@@ -137,12 +137,6 @@ export default function Home() {
                 Be the first to know about our exciting product launch!
               </p>
               <AccessForm />
-              {/* <HubSpotForm
-                region="na1"
-                portalId="21427242"
-                formId="ba59cd08-1609-4350-9b17-690c23c91de9"
-                target="earlyAccessForm"
-                /> */}
             </div>
           </div>
         </div>
